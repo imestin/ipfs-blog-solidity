@@ -68,5 +68,20 @@ contract BlogDatabase is Ownable {
   function readAdvancedHelp() public view returns (string memory) {
     return helpfile_advanced;
   }
+
+  /** Article functions */
+  
+  function addNewArticle(string memory articleCID) public onlyOwner {
+      articles.push(articleCID);
+      emit newArticle(articleCID);
+  }
+  
+  function getAllArticles() public view returns (string[] memory) {
+      return articles;
+  }
+  
+  function getSpecificArticle(uint8 which) public view returns(string memory) {
+      return articles[which];
+  }
   
 }
